@@ -1,0 +1,53 @@
+<section data-ng-init="detailController.init()">
+    <alert></alert>
+    <md-content class="md-padding" layout-align-xs="column" layout-align-gt-xs="column" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card layout="row" layout-align="end center" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <md-card-content layout="row" layout-align="space-between">
+                    <md-card-actions layout="column">
+                        <md-button class="md-fab md-primary" id="backPage"
+                            data-ng-click="detailController.backPage()">
+                            <md-icon class="material-icons">arrow_back</md-icon>
+                        </md-button>
+                    </md-card-actions>
+                </md-card-content>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Voltar para pesquisa de vídeos</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
+    </md-content>
+    <md-content class="md-padding" layout-align-xs="column" layout-align-gt-xs="column" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card class="card-video" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <div class="videoWrapper">
+                    <iframe id="player" type="text/html"
+                        width="640" 
+                        height="390"
+                        allowfullscreen
+                        src="{{detailController.videoUrl}}"
+                        frameborder="0">
+                    </iframe>
+                </div>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline title">{{detailController.youTubeData.snippet.title}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline description">{{detailController.youTubeData.snippet.description}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline view-count">{{detailController.youTubeData.statistics.viewCount | number:2}} visualizações</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
+        </div>
+    </md-content>
+    <back-to-top></back-to-top>
+</section>

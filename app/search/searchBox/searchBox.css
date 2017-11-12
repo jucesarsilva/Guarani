@@ -1,0 +1,123 @@
+.guarani #btn-search {
+    margin: 12px 5px 0px 20px;
+    padding: 0px;
+}
+
+.guarani .search-header {
+  text-align: center;
+  margin: 0px;
+  padding: 15px;
+  border-bottom: 1px solid #969696;
+  width: 100%;
+  color: #969696;
+}
+
+/* Animation - searchBox - search in */
+.guarani .search-in {
+    width: 100%;
+    animation: searchin 1s ease 0s normal forwards 1 running;
+    -webkit-animation: searchin 1s ease 0s normal forwards 1 running;
+    -moz-animation: searchin 1s ease 0s normal forwards 1 running;
+    -o-animation: searchin 1s ease 0s normal forwards 1 running;
+    -ms-animation: searchin 1s ease 0s normal forwards 1 running;
+  }
+  
+  @keyframes searchin {
+    0% {
+      transform: translateY(20px);
+    }
+    100% {
+      transform: translateY(calc(50% + 60px));
+    }
+  }
+  
+  @-moz-keyframes searchin {
+    0% {
+      -moz-transform: translateY(20px);
+    }
+    100% {
+      -moz-transform: translateY(calc(50% + 60px));
+    }
+  }
+  
+  @-webkit-keyframes searchin {
+    0% {
+      -webkit-transform: translateY(20px);
+    }
+    100% {
+      -webkit-transform: translateY(calc(50% + 60px));
+    }
+  }
+  
+  @-o-keyframes searchin {
+    0% {
+      -o-transform: translateY(20px);
+    }
+    100% {
+      -o-transform: translateY(calc(50% + 60px));
+    }
+  }
+  
+  @-ms-keyframes searchin {
+    0% {
+      -ms-transform: translateY(20px);
+    }
+    100% {
+      -ms-transform: translateY(calc(50% + 60px));
+    }
+  }
+
+/* Animation - searchBox - search out */
+.guarani .search-out {
+  width: 100%;
+    animation: searchout 0.5s ease 0s normal forwards 1 running;
+    -webkit-animation: searchout 0.5s ease 0s normal forwards 1 running;
+    -moz-animation: searchout 0.5s ease 0s normal forwards 1 running;
+    -o-animation: searchout 0.5s ease 0s normal forwards 1 running;
+    -ms-animation: searchout 0.5s ease 0s normal forwards 1 running;
+  }
+  
+  @keyframes searchout {
+    0% {
+      transform: translateY(calc(50% + 60px));
+    }
+    100% {
+      transform:  translateY(20px);
+    }
+  }
+  
+  @-moz-keyframes searchout {
+    0% {
+      -moz-transform: translateY(calc(50% + 60px));
+    }
+    100% {
+      -moz-transform:  translateY(20px);
+    }
+  }
+  
+  @-webkit-keyframes searchout {
+    0% {
+      -webkit-transform: translateY(calc(50% + 60px));
+    }
+    100% {
+      -webkit-transform:  translateY(20px);
+    }
+  }
+  
+  @-o-keyframes searchout {
+    0% {
+      -o-transform: translateY(calc(50% + 60px));
+    }
+    100% {
+      -o-transform: translateY(20px);
+    }
+  }
+  
+  @-ms-keyframes searchout {
+    0% {
+      -ms-transform: translateY(calc(50% + 60px));
+    }
+    100% {
+      -ms-transform: translateY(20px);
+    }
+  }

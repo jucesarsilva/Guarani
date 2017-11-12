@@ -1,0 +1,42 @@
+<div data-ng-class="{'search-in': searchController.youtubeData.length == 0, 'search-out': searchController.youtubeData.length > 0}">
+    <md-content class="md-padding" layout-align-xs="column" layout-align-gt-xs="column" layout="row" layout-align="center center">
+        <div flex-xs flex-gt-xs="50" layout="column">
+            <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                <div layout="row" flex>
+                    <h2 class="search-header">Digite para pesquisar um vídeo no YouTube.</h2>
+                </div>
+                <form name="searchController.searchForm" layout layout-align="center" layout-padding>
+                    <div layout="row" flex>
+                        <md-input-container class="md-icon-float md-block md-title">
+                            <label>Paginas</label>
+                                <md-select ng-model="searchController.maxResults">
+                                  <md-option data-ng-repeat="($indexpage, page) in searchController.pages track by $indexpage" data-ng-value="page" data-ng-disabled="page === null">
+                                    {{page}}
+                                  </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex class="md-icon-float md-block md-title">
+                            <label>Pesquisar</label>
+                            <input type="search"
+                                data-ng-keyup="searchController.keyup($event, searchController.query);"
+                                data-ng-model="searchController.query" 
+                                name="search"
+                                id="search"
+                                maxlength="16"
+                                md-maxlength="15"
+                                autocomplete="off">
+                                <div ng-messages="searchController.searchForm.search.$error" ng-show="searchController.searchForm.search.$invalid">
+                                    <div ng-message="md-maxlength">Máximo de 15 caracteres.</div>
+                                </div>
+                        </md-input-container>
+                        <div>
+                            <md-button data-ng-disabled="searchController.searchForm.$invalid" id="btn-search" class="md-raised" data-ng-click="searchController.filter(searchController.query)">
+                                <md-icon class="material-icons">search</md-icon>
+                            </md-button>
+                        </div>
+                    </div>  
+                </form>
+            </md-card>
+        </div>
+    </md-content>
+</div>

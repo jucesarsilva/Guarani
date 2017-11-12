@@ -1,0 +1,53 @@
+<div data-ng-class="{'pagination-in': searchController.youtubeData.length > 0, 'pagination-out': searchController.youtubeData.length == 0}">
+    <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <!-- Repiter -->
+        <md-card ng-repeat="($indexdata, data) in searchController.youtubeData track by $indexdata"
+          md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" 
+          md-theme-watch>
+          <md-card-title>
+            <!-- thumbnail -->
+            <md-card-title-media>
+              <div class="md-media-xl card-media">
+                  <a data-ng-click="searchController.goToDetail(data.id.videoId);" href="javascript:void(0)">
+                    <img alt="{{data.snippet.title}}" 
+                      data-ng-src="{{data.snippet.thumbnails.default.url}}" width="120" height="90"
+                      md-card-image>
+                  </a>
+              </div>
+            </md-card-title-media>
+            <md-card-title-text class="card-hed">
+              <!-- title -->
+              <span class="md-headline">
+                <p>
+                  <a class="title" target="_block" href="https://www.youtube.com/watch?v={{data.id.videoId}}">{{data.snippet.title}}</a>
+                </p>
+              </span>
+              <!-- author -->
+              <span class="md-subhead">
+                <p>
+                  <a class="author" target="_block" href="https://www.youtube.com/channel/{{data.snippet.channelId}}">
+                    <span class="label label-info">{{data.snippet.channelTitle}}</span>
+                  </a>
+                </p>
+              </span>
+              <!-- description -->
+              <span class="md-subhead">
+                <p class="description">
+                  {{data.snippet.description}}
+                </p>
+              </span>
+            </md-card-title-text>
+          </md-card-title>
+        </md-card>
+        <!-- Controles de paginação -->
+        <div id="group-load-more" class="btn-group" role="group" data-ng-if="searchController.youtubeData.length > 0">
+          <md-button class="md-fab md-primary" id="pageToken"
+            data-ng-show="searchController.pageToken" 
+            data-ng-click="searchController.loadMore(searchController.pageToken)">
+              <md-icon class="material-icons">add</md-icon>
+          </md-button>
+        </div>
+      </div>
+    </md-content>
+</div>
