@@ -41,8 +41,8 @@ module.exports = function(config) {
     exclude: [
         'karma.config.js'
     ],
-    autoWatch: false,
-    singleRun: true,
+    autoWatch: true,
+    singleRun: false,
     concurrency: Infinity,
     frameworks: ['jasmine'],
     reporters: ['progress', 'mocha', 'summary'],

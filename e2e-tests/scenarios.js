@@ -1,21 +1,19 @@
 'use strict';
 
-/* https://github.com/angular/protractor/blob/master/docs/toc.md */
-
 describe('guarani', function() {
 
-  it('should automatically redirect to /contacts when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/contacts");
+  it('deve redirecionar automaticamente para', function() {
+    browser.get('/');
+    expect(browser.getLocationAbsUrl()).toMatch("/search");
   });
 
-  describe('contacts', function() {
+  describe('search', function() {
 
     beforeEach(function() {
-      browser.get('/#!/contacts');
+      browser.get('/#!/search');
     });
 
-    it('should have a title', function() {
+    it('Deve recuperar o título', function() {
         expect(browser.getTitle()).toEqual('guarani');
     });
   });

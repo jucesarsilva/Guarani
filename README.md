@@ -19,12 +19,23 @@ npm install
 ```
 npm start
 ```
+Ou
+```
+npm install
+gulp server
+```
 disponível: `http://localhost:8000/index.html`.
 ### Rodar testes unitários
 ```
 npm test
 ```
-### Rodar testes e2e
+### Rodar testes e2e (Protractor + Selenium)
+Você precisará de 2 terminais para rodar os testes automatizados
+1º terminal - Rodar para inicializar a aplicação
+```
+npm  start
+```
+2º terminal - Rodar para inicializar a aplicação
 ```
 npm run protractor
 ```
