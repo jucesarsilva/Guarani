@@ -3,9 +3,6 @@ var modules = {};
 // root module name
 modules.main = "guarani";
 
-//components modules
-modules.autoResize = modules.main.concat(".autoResize");
-
 // centralized modules
 modules.directives = modules.main.concat(".directives");
 modules.filters = modules.main.concat(".filters");

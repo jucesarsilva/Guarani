@@ -1,40 +1,63 @@
-describe('ContactsControllerTest', function () {
+describe('SearchController ->', function () {
 
-    beforeEach(module('ngRoute', 'tooltip', 'ngMaterial',
-                      modules.services, 
-                      modules.directives, 
-                      modules.filters, 
-                      modules.search,
-                      modules.detail));
+    var $scope;
+    var SearchController;
+    var $document;
+    var $controller;
+    var $notification;
+    var $compile;
+    var $rootScope;
 
-    var $document, $controller, $notification, $compile, $rootScope;
+    angular.mock.module.sharedInjector();
+    beforeAll(angular.mock.module('ngRoute'));
+    beforeAll(angular.mock.module('ngMaterial'));
+    beforeAll(angular.mock.module('ngMaterial'));
+    beforeAll(angular.mock.module(modules.directives));
+    beforeAll(angular.mock.module(modules.services));
+    beforeAll(angular.mock.module(modules.filters));
+    beforeAll(angular.mock.module(modules.search));
+    beforeAll(angular.mock.module(modules.detail));
 
-    beforeEach(inject(function(_$document_, _$rootScope_, _$controller_, _$notification_, _$compile_){
+    beforeAll(angular.mock.inject(function(_$document_, _$rootScope_, _$controller_, _$notification_, _$compile_){
         $rootScope = _$rootScope_;
         $controller = _$controller_;
         $notification = _$notification_;
         $compile = _$compile_;
+        $scope = $rootScope.$new();
+        SearchController = $controller('SearchController', { $scope: $scope });
     }));
 
-    /******************* bloco de teste para verificação se funções são definidas ***********************/
-    describe('--> exists function', function () {
-        
+    describe('verificar se functions estão definidas --> ', function () {
         it("deve existir o método 'init()' ", function () {
-			var $scope = $rootScope.$new();
-			var controller = $controller('SearchController', { $scope: $scope });
-            expect($scope.init).toBeDefined();
+            expect(SearchController.init).toBeDefined();
 		});	
 
-        it("deve existir o método 'goToDetails()' ", function () {
-            var $scope = $rootScope.$new();
-            var controller = $controller('SearchController', { $scope: $scope });
-            expect($scope.goToDetails).toBeDefined();
+        it("deve existir o método 'goToDetail()' ", function () {
+            expect(SearchController.goToDetail).toBeDefined();
         }); 
 
-        it("deve existir o método 'create()' ", function () {
-            var $scope = $rootScope.$new();
-            var controller = $controller('SearchController', { $scope: $scope });
-            expect($scope.create).toBeDefined();
-        }); 
+        it("deve existir o método 'loadMore()' ", function () {
+           expect(SearchController.loadMore).toBeDefined();
+        });
+        
+        it("deve existir o método 'checkDataLength()' ", function () {
+            expect(SearchController.checkDataLength).toBeDefined();
+        });
+
+        it("deve existir o método 'reset()' ", function () {
+            expect(SearchController.reset).toBeDefined();
+        });
+
+        it("deve existir o método 'keyup()' ", function () {
+            expect(SearchController.keyup).toBeDefined();
+        });
+
+        it("deve existir o método 'filter()' ", function () {
+            expect(SearchController.filter).toBeDefined();
+        });
+
+        it("deve existir o método 'search()' ", function () {
+            expect(SearchController.search).toBeDefined();
+        });
 	});
 });
