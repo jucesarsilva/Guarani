@@ -137,37 +137,3 @@ gulp.task('remove', ['concat-js', 'concat-css'], function () {
     gutil.log('Starting remove task.');
     return gulp.src('./app/dist/temp', {read: false}).pipe(clean());
 });
-
-/* Unity test coverage */
-gulp.task('unit:coverage', function(done) {
-    return new karma.Server({
-        configFile:  __dirname + '/karma.conf.js',
-        action: 'run',
-        singleRun: true,
-        preprocessors: {
-            './app/**/*.spec.js': ['jasmine', 'mocha', 'chai']
-        },
-        reporters: ['progress'],
-        coverageReporter: {
-            type : 'html',
-            dir : 'coverage/',
-            subdir: '/'
-        }
-    }, done).on('error', function(err) {
-        throw err;
-    }).start();
-});
-    
-/* Test */
-gulp.task('test', [], ['unit:coverage'], function() {
-    return gulp.src('./coverage/index.html')
-        .pipe(open());
-});
-
-/* Coverage server */
-gulp.task('coverage-server', function() {
-    gulp.src('./coverage/')
-    .pipe(webserver({
-        fallback: './coverage/index.html'
-    }));
-});
