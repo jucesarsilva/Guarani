@@ -138,13 +138,7 @@ gulp.task('remove', ['concat-js', 'concat-css'], function () {
     return gulp.src('./app/dist/temp', {read: false}).pipe(clean());
 });
 
-
-
-/**
- * @name unit:coverage
- * @description Runs unit tests with karma/phantomjs/mocha
- * and generates code coverage report in coverage/
- */
+/* Unity test coverage */
 gulp.task('unit:coverage', function(done) {
     return new karma.Server({
         configFile:  __dirname + '/karma.conf.js',
@@ -164,12 +158,16 @@ gulp.task('unit:coverage', function(done) {
     }).start();
 });
     
-
-/**
- * @name coverage
- * @description Generates and shows the code coverage report
- */
-gulp.task('coverage', ['unit:coverage'], function() {
-    return gulp.src('./coverage/js/index.html')
+/* Test */
+gulp.task('test', [], ['unit:coverage'], function() {
+    return gulp.src('./coverage/index.html')
         .pipe(open());
+});
+
+/* Coverage server */
+gulp.task('coverage-server', function() {
+    gulp.src('./coverage/')
+    .pipe(webserver({
+        fallback: './coverage/index.html'
+    }));
 });

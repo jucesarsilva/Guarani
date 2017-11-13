@@ -37,58 +37,34 @@ module.exports = function(config) {
         './app/search/searchBox/searchBox.js',
         './app/detail/*.js'
     ],
-
-    exclude: [
-        'karma.config.js'
-    ],
-    autoWatch: true,
-    singleRun: false,
+    exclude: ['karma.config.js'],
+    autoWatch: false,
+    singleRun: true,
     concurrency: Infinity,
     frameworks: ['jasmine'],
-    reporters: ['progress', 'mocha', 'summary', 'coverage'],
+    reporters: ['progress', 'coverage'],
     logLevel: config.LOG_INFO,
     browsers: ['Chrome'],
     plugins: [
         'karma-jasmine',
-        'karma-junit-reporter',
         'karma-coverage',
-        'karma-summary-reporter',
-        'karma-mocha-reporter',
         'karma-phantomjs-launcher',
         'karma-chrome-launcher',
-        'karma-firefox-launcher',
+        'karma-firefox-launcher'
     ],
     preprocessors: {
-        'app/**/*.js': ['coverage'],
-        'app/**/*.js': ['mocha'],
-        'app/**/*.js': ['summary']
+        './app/**/*.js': ['coverage']
     },
     coverageReporter: {
-        type : 'html',
-        dir : './coverage/'
+        includeAllSources: true,
+        dir: './coverage/',
+        reporters: [
+            { type: "html", subdir: "html" },
+            { type: 'text-summary' }
+        ]
     },
-    junitReporter: {
-        outputFile: 'test_out/unit.xml',
-        suite: 'unit'
-    },
-    summaryReporter: {
-        show: 'failed',
-        specLength: 50,
-        overviewColumn: true
-    },
-    mochaReporter: {
-        colors: {
-            success: 'blue',
-            info: 'bgGreen',
-            warning: 'cyan',
-            error: 'bgRed'
-        },
-        symbols: {
-            success: '+',
-            info: '#',
-            warning: '!',
-            error: 'x'
-        }
+    phantomjsLauncher: {
+        exitOnResourceError: true
     }
   });
 };
