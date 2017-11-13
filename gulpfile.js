@@ -46,20 +46,10 @@ gulp.task('server', ['watch'], function() {
 gulp.task('jshint', function () {
     return gulp.src([
         './app/modules.js',
-        './app/components/directives/directives.js',
-        './app/components/directives/popover/tooltip.js',
-        './app/components/directives/popover/popover.js',
-        './app/components/directives/popover/helpers/*.js',
-        './app/components/directives/alert/*.js',
-        './app/components/filters/filters.js',
-        './app/components/filters/moment/moment.js',
-        './app/components/filters/treusted/treusted.js',
-        './app/components/services/services.js',
-        './app/components/services/contact/contactService.js',
-        './app/components/services/notification/notification.js',
+        './app/components/**/**/*.js',
         './app/app.js',
-        './app/contacts/contacts.js',
-        './app/info/info.js'
+        './app/search/**/**/*.js',
+        './app/detail/**/**/*.js'
     ])
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
@@ -69,20 +59,10 @@ gulp.task('jshint', function () {
 gulp.task('uglify', function () {
     return gulp.src([
         './app/modules.js',
-        './app/components/directives/directives.js',
-        './app/components/directives/popover/tooltip.js',
-        './app/components/directives/popover/popover.js',
-        './app/components/directives/popover/helpers/*.js',
-        './app/components/directives/alert/*.js',
-        './app/components/filters/filters.js',
-        './app/components/filters/moment/moment.js',
-        './app/components/filters/treusted/treusted.js',
-        './app/components/services/services.js',
-        './app/components/services/contact/contactService.js',
-        './app/components/services/notification/notification.js',
+        './app/components/**/**/*.js',
         './app/app.js',
-        './app/contacts/contacts.js',
-        './app/info/info.js'
+        './app/search/**/**/*.js',
+        './app/detail/**/**/*.js'
     ])
     .pipe(uglify())
     .pipe(gulp.dest('./app/dist/temp'));
@@ -91,12 +71,11 @@ gulp.task('uglify', function () {
 /* HTML minifier */
 gulp.task('html-min', function() {
     return gulp.src([
-        './app/index.html', 
-        './app/components/directives/alert/alert.html',
-        './app/components/directives/popover/popover.html',
-        './app/components/directives/popover/tooltip.html',
-        './app/contacts/contacts.html',
-        './app/info/info.html'
+        './app/modules.html',
+        './app/components/**/**/*.html',
+        './app/app.html',
+        './app/search/**/**/*.html',
+        './app/detail/**/**/*.html'
     ])
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('./app/dist'));
@@ -105,11 +84,11 @@ gulp.task('html-min', function() {
 /* CSS minifier */
 gulp.task('css-min', function () {
     return gulp.src([
-        './app/components/angular-motion/modules/fade.css',
-        './app/components/angular-motion/angular-motion.css',
-        './app/components/directives/alert/alert.css',
+        './app/modules.css',
+        './app/components/**/**/*.css',
         './app/app.css',
-        './app/custom.css'
+        './app/search/**/**/*.css',
+        './app/detail/**/**/*.css'
     ])
     .pipe(cssmin())
     .pipe(gulp.dest('./app/dist/temp'));
